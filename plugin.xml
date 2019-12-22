@@ -49,12 +49,15 @@
                 <param name="ios-package" value="CDVWKWebViewEngine" />
             </feature>
             <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+            <allow-navigation href="cdv:*" />
         </config-file>
 
         <framework src="WebKit.framework" weak="true" />
 
         <header-file src="src/ios/CDVWKWebViewEngine.h" />
         <source-file src="src/ios/CDVWKWebViewEngine.m" />
+        <header-file src="src/ios/CDVWKURLSchemeHandler.h" />
+        <source-file src="src/ios/CDVWKURLSchemeHandler.m" />
         <header-file src="src/ios/CDVWKWebViewUIDelegate.h" />
         <source-file src="src/ios/CDVWKWebViewUIDelegate.m" />
         <header-file src="src/ios/CDVWKProcessPoolFactory.h" />

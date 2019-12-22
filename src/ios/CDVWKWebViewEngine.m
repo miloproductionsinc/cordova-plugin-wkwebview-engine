@@ -17,6 +17,7 @@
  under the License.
  */
 
+#import "CDVWKURLSchemeHandler.h"
 #import "CDVWKWebViewEngine.h"
 #import "CDVWKWebViewUIDelegate.h"
 #import "CDVWKProcessPoolFactory.h"
@@ -95,6 +96,10 @@
     WKWebViewConfiguration* configuration = [self createConfigurationFromSettings:settings];
     configuration.userContentController = userContentController;
 
+    if (@available(iOS 11.0, *)) {
+        [configuration setURLSchemeHandler:[CDVWKURLSchemeHandler alloc] forURLScheme:@"cdv"];
+    }
+    
     // re-create WKWebView, since we need to update configuration
     WKWebView* wkWebView = [[WKWebView alloc] initWithFrame:self.engineWebView.frame configuration:configuration];
     wkWebView.UIDelegate = self.uiDelegate;
